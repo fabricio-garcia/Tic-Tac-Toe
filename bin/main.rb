@@ -1,25 +1,26 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
+
 require '../lib/classes.rb'
 
-WIN = [[0, 1, 2], [3, 4, 5], [6, 7, 8], 
-       [0, 3, 6], [1, 4, 7], [2, 5, 8], 
-       [0, 4, 8], [2, 4, 6]] 
+WIN = [[0, 1, 2], [3, 4, 5], [6, 7, 8],
+       [0, 3, 6], [1, 4, 7], [2, 5, 8],
+       [0, 4, 8], [2, 4, 6]].freeze
 
 $count = 0
 class Tic
-
   def initialize
     @board = Board.new
     @player = Player.new
   end
- 
+
   def run
     puts "\nWelcome to tic tac toe in Ruby\n"
     while $count < 9
       @player.switch
       puts "\nPlayer #{@player.player}, pick a number between 1-9: \n\n"
       @board.add_to_board(
-        @player.num_choice(@board.game_board), 
+        @player.num_choice(@board.game_board),
         @player.player
       )
       puts
@@ -31,13 +32,9 @@ class Tic
       end
       $count += 1
     end
-    if $count >= 9
-      puts "\nGame is a draw\n\n"
-    end
+    puts "\nGame is a draw\n\n" if $count >= 9
   end
 end
 
 tic = Tic.new
 tic.run
-
-
