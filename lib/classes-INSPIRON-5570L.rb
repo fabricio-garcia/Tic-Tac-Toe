@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-Learn(more) || give(us(feedback))
 class Board
   attr_accessor :game_board, :board_num
   def initialize
